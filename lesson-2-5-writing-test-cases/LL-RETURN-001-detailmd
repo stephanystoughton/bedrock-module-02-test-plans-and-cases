@@ -1,0 +1,33 @@
+# LL-RETURN-001 Detail View
+
+## Test ID
+LL-RETURN-001
+
+## Test Title
+Verify an eligible return can be initiated by the customer
+
+## Preconditions
+1. A LinenLane customer is signed in and can access the support page.
+2. The customer has a delivered order that is currently in the Eligible return state.
+3. The order is still within the 30-day return window after the DeliveryScan event.
+
+## Test Data
+- Order ID: `LL-ORDER-1001`
+- Current Return State: `Eligible`
+- Event: `InitiateReturn`
+
+## Steps to Execute
+1. Navigate to the LinenLane support page.
+2. Locate order `LL-ORDER-1001`.
+3. Select the option to initiate a return for the order.
+4. Submit the return request.
+5. View the return status for the order.
+
+## Expected Results
+1. The system accepts the `InitiateReturn` event for the eligible order.
+2. A return request is successfully created for order `LL-ORDER-1001`.
+3. The return state changes from `Eligible` to `Requested`.
+4. The return status displayed to the customer is `Requested`.
+
+## Postconditions
+Order `LL-ORDER-1001` has an active return request in the `Requested` state. The test return should be reset or removed before the test data is reused.
